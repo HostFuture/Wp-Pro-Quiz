@@ -2,7 +2,7 @@
 
 A powerful and beautiful quiz plugin for WordPress. Originally created by [Julius](http://www.it-gecko.de/) modified by [HostFuture](https://hostfuture.co.in).
 
-![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dm/wp-pro-quiz) ![GitHub all releases](https://img.shields.io/github/downloads/HostFuture/Wp-Pro-Quiz/total) ![GitHub last commit](https://img.shields.io/github/last-commit/HostFuture/Wp-Pro-Quiz)
+![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dm/wp-pro-quiz) ![GitHub release (latest by date)](https://img.shields.io/github/downloads/HostFuture/Wp-Pro-Quiz/0.37/total) ![GitHub last commit](https://img.shields.io/github/last-commit/HostFuture/Wp-Pro-Quiz)
 
 To locate and find out all the features, translations & demo of the Original version of this plugin please visit [Wp-Pro-Quiz](https://github.com/xeno010/Wp-Pro-Quiz).
 
