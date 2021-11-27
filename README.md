@@ -23,10 +23,9 @@ To locate and find out all the features, translations & demo of the Original ver
 ## Author
 
 - Original Author: [Julius](http://www.it-gecko.de/)
-- Contributor: ![HostFuture](https://account.hostfuture.co.in/assets/img/whmcs-logo.png)
+- Contributor: ![HostFuture](https://account.hostfuture.co.in/assets/img/whmcs-logo.png | width=100)
 
 
 ## Donate
 
-<a href="https://www.instamojo.com/@HostFuture/" rel="im-checkout" data-text="Donate Us" data-css-style="color:#ffffff; background:#004fff; width:180px; border-radius:30px"   data-layout="vertical"></a>
-<script src="https://js.instamojo.com/v1/button.js"></script>
+![Donate Us](https://i1.wp.com/smashrxllc.com/wp-content/uploads/2019/09/support-us-button.png?w=150&ssl=1)
