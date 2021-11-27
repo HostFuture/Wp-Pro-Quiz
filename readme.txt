@@ -34,4 +34,4 @@ To locate and find out all the features, translations & demo of the Original ver
 == Author ==
 
 - Original Author: [Julius](http://www.it-gecko.de/)
-- Contributor: ![HostFuture](https://account.hostfuture.co.in/assets/img/whmcs-logo.png)
+- Contributor: [HostFuture](https://hostfuture.co.in)
