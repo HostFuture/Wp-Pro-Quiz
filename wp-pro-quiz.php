@@ -3,6 +3,7 @@
  * Wp-Pro-Quiz
  *
  * @author Julius Fischer
+ * @contributor HostFuture
  * @copyright 2012-2020 Julius Fischer (IT-Gecko.de)
  * @license GPL-2.0-or-later
  *
@@ -10,19 +11,19 @@
  * Plugin Name: Wp-Pro-Quiz
  * Plugin URI: http://wordpress.org/extend/plugins/wp-pro-quiz
  * Description: A powerful and beautiful quiz plugin for WordPress.
- * Version: 0.38
+ * Version: 10.37
  * Requires at least: 4.6
  * Requires PHP: 5.6
  * Author: Julius Fischer
+ * Contributor: HostFuture
  * Author URI: http://www.it-gecko.de
- * Last Updated By: Debjit Sadhukhan
- * Updated URI: https://hostfuture.co.in
+ * Contributor URI: https://hostfuture.co.in
  * Text Domain: wp-pro-quiz
  * License: GPL v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-define('WPPROQUIZ_VERSION', '0.38');
+define('WPPROQUIZ_VERSION', '10.37');
 
 define('WPPROQUIZ_DEV', false);
 

@@ -24,6 +24,7 @@ function wpProQuiz_fetchToplist() {
                     td.eq(2).text(data[i].date);
                     td.eq(3).text(data[i].points);
                     td.eq(4).text(data[i].result + ' %');
+                    td.eq(5).text(data[i].percentile + ' %');
 
                     if (i & 1) {
                         td.addClass('wpProQuiz_toplistTrOdd');

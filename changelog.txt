@@ -1,3 +1,8 @@
+= 0.38 =
+* New FrontToplist Design and structure
+* Added Quiz Time	and Percentile in TopList 
+* Design Change for FrontTopList & FrontQuizResults 
+
 = 0.37 =
 * New frontend init structure
 * Added gulp support

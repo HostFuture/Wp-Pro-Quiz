@@ -396,7 +396,7 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
                             </div>
                             <div style="padding-top: 5px;" class="wpProQuiz_answerPoints">
                                 <label>
-                                    <input type="number" min="0" class="small-text wpProQuiz_points"
+                                    <input type="number" class="small-text wpProQuiz_points"
                                            name="answerData[][points]" value="<?php echo $d->getPoints(); ?>">
                                     <?php _e('Points', 'wp-pro-quiz'); ?>
                                 </label>
@@ -444,7 +444,7 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
                     <tr>
                         <td style="border-right: 1px solid #9E9E9E; padding: 5px; vertical-align: top;">
                             <label class="wpProQuiz_answerPoints">
-                                <input type="number" min="0" class="small-text wpProQuiz_points"
+                                <input type="number" class="small-text wpProQuiz_points"
                                        name="answerData[][points]" value="<?php echo $d->getPoints(); ?>">
                                 <?php _e('Points', 'wp-pro-quiz'); ?>
                             </label>
@@ -516,7 +516,7 @@ class WpProQuiz_View_QuestionEdit extends WpProQuiz_View_View
                             </div>
                             <div style="padding-top: 5px;" class="wpProQuiz_answerPoints">
                                 <label>
-                                    <input type="number" min="0" class="small-text wpProQuiz_points"
+                                    <input type="number" class="small-text wpProQuiz_points"
                                            name="answerData[][points]" value="<?php echo $d->getPoints(); ?>">
                                     <?php _e('Points', 'wp-pro-quiz'); ?>
                                 </label>

@@ -10,7 +10,9 @@ class WpProQuiz_Model_Toplist extends WpProQuiz_Model_Model
     protected $_email;
     protected $_points;
     protected $_result;
+    protected $_percentile;
     protected $_ip;
+    protected $_quiztime;
 
     public function setToplistId($_toplistId)
     {
@@ -108,6 +110,18 @@ class WpProQuiz_Model_Toplist extends WpProQuiz_Model_Model
         return $this->_result;
     }
 
+    public function setPercentile($_percentile)
+    {
+        $this->_percentile = (float)$_percentile;
+
+        return $this;
+    }
+
+    public function getPercentile()
+    {
+        return $this->_percentile;
+    }
+
     public function setIp($_ip)
     {
         $this->_ip = (string)$_ip;
@@ -118,5 +132,17 @@ class WpProQuiz_Model_Toplist extends WpProQuiz_Model_Model
     public function getIp()
     {
         return $this->_ip;
+    }
+
+    public function setQuiztime($_quiztime)
+    {
+        $this->_quiztime = (float)$_quiztime;
+
+        return $this;
+    }
+
+    public function getQuiztime()
+    {
+        return $this->_quiztime;
     }
 }

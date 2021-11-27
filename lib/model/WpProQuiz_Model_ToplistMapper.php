@@ -66,9 +66,10 @@ class WpProQuiz_Model_ToplistMapper extends WpProQuiz_Model_Mapper
                 'email' => $toplist->getEmail(),
                 'points' => $toplist->getPoints(),
                 'result' => $toplist->getResult(),
-                'ip' => $toplist->getIp()
+                'ip' => $toplist->getIp(),
+                'quiztime' => $toplist->getQuiztime()
             ),
-            array('%d', '%d', '%d', '%s', '%s', '%d', '%f', '%s'));
+            array('%d', '%d', '%d', '%s', '%s', '%d', '%f', '%s', '%f'));
 
         $toplist->setToplistId($this->_wpdb->insert_id);
     }
@@ -101,16 +102,19 @@ class WpProQuiz_Model_ToplistMapper extends WpProQuiz_Model_Mapper
 
         $results = $this->_wpdb->get_results(
             $this->_wpdb->prepare(
-                'SELECT
-								*
-							FROM
-								' . $this->_tableToplist . '
-							WHERE
-								quiz_id = %d
-							' . $s . '
-							LIMIT %d, %d'
-                , $quizId, $start, $limit),
-            ARRAY_A);
+                'SELECT a.*, (SELECT 100*COUNT(b.result)
+                /(SELECT COUNT(c.result) FROM ' . $this->_tableToplist . ' c)
+                FROM ' . $this->_tableToplist . ' b 
+                WHERE b.result <= a.result AND b.quiz_id = a.quiz_id)
+                AS percentile
+                FROM
+                    ' . $this->_tableToplist . ' a
+                WHERE
+                    quiz_id = %d
+                ' . $s . '
+                LIMIT %d, %d'
+            , $quizId, $start, $limit),
+        ARRAY_A);
 
         foreach ($results as $row) {
             $r[] = new WpProQuiz_Model_Toplist($row);

@@ -93,6 +93,7 @@ wpProQuizReady(function () {
         var results = new Object();
         var catResults = new Object();
         var startTime = 0;
+        var duration = 0;
         var currentQuestion = null;
         var quizSolved = [];
         var lastButtonValue = "";
@@ -1369,6 +1370,8 @@ wpProQuizReady(function () {
 
                 var time = (+new Date() - startTime) / 1000;
                 time = (config.timelimit && time > config.timelimit) ? config.timelimit : time;
+                duration = time;
+                console.log(time);
 
                 $e.find('.wpProQuiz_quiz_time span').text(plugin.methode.parseTime(time));
 
@@ -1390,7 +1393,7 @@ wpProQuizReady(function () {
 
                 $pointFields.eq(0).text(results.comp.points);
                 $pointFields.eq(1).text(config.globalPoints);
-                $pointFields.eq(2).text(results.comp.result + '%');
+                //$pointFields.eq(2).text(results.comp.result + '%');
 
                 //Result-Text START
                 var $resultText = $e.find('.wpProQuiz_resultsList > li').eq(plugin.methode.findResultIndex(results.comp.result));
@@ -1818,7 +1821,8 @@ wpProQuizReady(function () {
                         captcha: $addBox.find('input[name="wpProQuiz_captcha"]').val(),
                         prefix: $addBox.find('input[name="wpProQuiz_captchaPrefix"]').val(),
                         points: results.comp.points,
-                        totalPoints: config.globalPoints
+                        totalPoints: config.globalPoints,
+                        quiztime: duration
                     }
                 }, function (json) {
                     $addToplistMessage.text(json.text);

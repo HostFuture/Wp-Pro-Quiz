@@ -73,6 +73,7 @@ class WpProQuiz_Controller_Toplist extends WpProQuiz_Controller_Controller
         $name = !empty($this->_post['name']) ? trim($this->_post['name']) : '';
         $email = !empty($this->_post['email']) ? trim($this->_post['email']) : '';
         $ip = filter_var($_SERVER['REMOTE_ADDR'], FILTER_VALIDATE_IP);
+        $quiztime = (float)$this->_post['quiztime'];
         $captchaAnswer = !empty($this->_post['captcha']) ? trim($this->_post['captcha']) : '';
         $prefix = !empty($this->_post['prefix']) ? trim($this->_post['prefix']) : '';
 
@@ -140,7 +141,8 @@ class WpProQuiz_Controller_Toplist extends WpProQuiz_Controller_Controller
             ->setEmail($email)
             ->setPoints($points)
             ->setResult(round($points / $totalPoints * 100, 2))
-            ->setIp($ip);
+            ->setIp($ip)
+            ->setQuiztime($quiztime);
 
         $toplistMapper->save($toplist);
 
@@ -279,7 +281,9 @@ class WpProQuiz_Controller_Toplist extends WpProQuiz_Controller_Controller
                     'date' => WpProQuiz_Helper_Until::convertTime($tp->getDate(),
                         get_option('wpProQuiz_toplistDataFormat', 'Y/m/d g:i A')),
                     'points' => $tp->getPoints(),
-                    'result' => $tp->getResult()
+                    'result' => $tp->getResult(),
+                    'quiztime' => $tp->getQuiztime(),
+                    'percentile' => $tp->getPercentile()
                 );
             }
         }

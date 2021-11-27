@@ -306,9 +306,9 @@
     font-weight: bold !important;
 }
 
-.wpProQuiz_toplistTable tbody td:FIRST-CHILD {
+/*.wpProQuiz_toplistTable tbody td:FIRST-CHILD {
     font-weight: bold !important;
-}
+}*/
 
 .wpProQuiz_toplistTable td, .wpProQuiz_toplistTable th {
     padding: 5px !important;

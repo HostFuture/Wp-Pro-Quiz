@@ -233,6 +233,7 @@ class WpProQuiz_Helper_DbUpgrade
 			  points int(10) unsigned NOT NULL,
 			  result float unsigned NOT NULL,
 			  ip varchar(100) NOT NULL,
+				quiztime float unsigned NOT NULL,
 			  PRIMARY KEY  (toplist_id,quiz_id)
 			) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 		");

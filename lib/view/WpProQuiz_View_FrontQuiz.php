@@ -98,7 +98,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View
             $this->showLoadQuizBox();
             $this->showStartOnlyRegisteredUserBox();
             $this->showPrerequisiteBox();
-            $this->showResultBox($result, $question_count);
+            $this->showResultBox($result, $question_count, $this->quiz->getName());
 
             if ($this->quiz->getToplistDataShowIn() == WpProQuiz_Model_Quiz::QUIZ_TOPLIST_SHOW_IN_BUTTON) {
                 $this->showToplistInButtonBox();
@@ -217,7 +217,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View
             $this->showLoadQuizBox();
             $this->showStartOnlyRegisteredUserBox();
             $this->showPrerequisiteBox();
-            $this->showResultBox($result, $question_count);
+            $this->showResultBox($result, $question_count, $this->quiz->getName());
 
             if ($this->quiz->getToplistDataShowIn() == WpProQuiz_Model_Quiz::QUIZ_TOPLIST_SHOW_IN_BUTTON) {
                 $this->showToplistInButtonBox();
@@ -535,7 +535,7 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View
     {
         ?>
         <div style="display: none;" class="wpProQuiz_startOnlyRegisteredUser">
-            <p>
+            <p href=''>
                 <?php echo $this->_buttonNames['only_registered_user_msg']; ?>
             </p>
         </div>
@@ -688,71 +688,105 @@ class WpProQuiz_View_FrontQuiz extends WpProQuiz_View_View
         <?php
     }
 
-    private function showResultBox($result, $questionCount)
+    private function showResultBox($result, $questionCount, $quizName)
     {
         ?>
         <div style="display: none;" class="wpProQuiz_results">
-            <h4 class="wpProQuiz_header"><?php _e('Results', 'wp-pro-quiz'); ?></h4>
-            <?php if (!$this->quiz->isHideResultCorrectQuestion()) { ?>
-                <p>
-                    <?php printf(__('%s of %s questions answered correctly', 'wp-pro-quiz'),
-                        '<span class="wpProQuiz_correct_answer">0</span>', '<span>' . $questionCount . '</span>'); ?>
-                </p>
-            <?php }
-            if (!$this->quiz->isHideResultQuizTime()) { ?>
-                <p class="wpProQuiz_quiz_time">
-                    <?php _e('Your time: <span></span>', 'wp-pro-quiz'); ?>
-                </p>
-            <?php } ?>
-            <p class="wpProQuiz_time_limit_expired" style="display: none;">
-                <?php _e('Time has elapsed', 'wp-pro-quiz'); ?>
-            </p>
-            <?php if (!$this->quiz->isHideResultPoints()) { ?>
-                <p class="wpProQuiz_points">
-                    <?php printf(__('You have reached %s of %s points, (%s)', 'wp-pro-quiz'), '<span>0</span>',
-                        '<span>0</span>', '<span>0</span>'); ?>
-                </p>
-            <?php } ?>
-            <?php if ($this->quiz->isShowAverageResult()) { ?>
-                <div class="wpProQuiz_resultTable">
-                    <table>
-                        <tbody>
-                        <tr>
-                            <td class="wpProQuiz_resultName"><?php _e('Average score', 'wp-pro-quiz'); ?></td>
-                            <td class="wpProQuiz_resultValue">
-                                <div style="background-color: #6CA54C;">&nbsp;</div>
-                                <span>&nbsp;</span>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td class="wpProQuiz_resultName"><?php _e('Your score', 'wp-pro-quiz'); ?></td>
-                            <td class="wpProQuiz_resultValue">
-                                <div style="background-color: #F79646;">&nbsp;</div>
-                                <span>&nbsp;</span>
-                            </td>
-                        </tr>
-                        </tbody>
-                    </table>
-                </div>
-            <?php } ?>
-            <div class="wpProQuiz_catOverview" <?php $this->isDisplayNone($this->quiz->isShowCategoryScore()); ?>>
-                <h4><?php _e('Categories', 'wp-pro-quiz'); ?></h4>
+            
+          <div class="wp-quiz-pro_result_row">
 
-                <div style="margin-top: 10px;">
-                    <ol>
-                        <?php foreach ($this->category as $cat) {
-                            if (!$cat->getCategoryId()) {
-                                $cat->setCategoryName(__('Not categorized', 'wp-pro-quiz'));
-                            }
-                            ?>
-                            <li data-category_id="<?php echo $cat->getCategoryId(); ?>">
-                                <span class="wpProQuiz_catName"><?php echo $cat->getCategoryName(); ?></span>
-                                <span class="wpProQuiz_catPercent">0%</span>
-                            </li>
-                        <?php } ?>
-                    </ol>
+            <div class="column">
+
+              <div class="card">
+                <div class="card_top">
+                  <div class="progress-circle-outer">
+                    <div class="progress-circle">
+                      <svg viewBox="0 0 36 36" class='wpProQuiz_results_circle'>
+                        <path class="circle white"
+                          d="M18 2.0845
+                            a 15.9155 15.9155 0 0 1 0 31.831
+                            a 15.9155 15.9155 0 0 1 0 -31.831"
+                        />
+                        <text x="18" y="20.35" class="percentage wpProQuiz_quiz_your_result"></text>
+                      </svg>
+                    </div>
+                  </div>
+                  <div class="progress-title">Your Score</div>
                 </div>
+
+                <div class="card_courses wpProQuiz_catOverview" <?php $this->isDisplayNone($this->quiz->isShowCategoryScore()); ?>>
+                  <div class="course-list">
+
+                  <?php foreach ($this->category as $cat) {
+                    if (!$cat->getCategoryId()) {
+                      $cat->setCategoryName(__('Not categorized', 'wp-pro-quiz'));
+                    }
+                  ?>
+                    
+                    <li class="course-card" data-category_id="<?php echo $cat->getCategoryId(); ?>">
+                      <span class="course-card__text wpProQuiz_catName"> <?php echo $cat->getCategoryName(); ?></span>
+                      <span class="course-card__text wpProQuiz_catPercent">0%</span>
+                    </li>
+
+                  <?php } ?>
+    
+                  </div>
+                </div>
+              
+              </div>
+
+              <div class="card">
+                <div class="container">
+                  <ul class="wpProQuiz_resultsList">
+                    <?php foreach ($result['text'] as $resultText) { ?>
+                      <li style="display: none;">
+                        <div>
+                          <?php echo do_shortcode(apply_filters('comment_text', $resultText)); ?>
+                        </div>
+                      </li>
+                    <?php } ?>
+                  </ul>
+                </div>
+              </div>
+            
             </div>
+
+            <div class="card" style="margin-left: 30px;">
+              <div class="container">
+                <div class="header">Edunitee</div>
+                <div class="content">
+                  <h2>Your<strong>Score Card</strong></h2>
+                </div>
+              </div>
+              <table>
+                <tr><td class="heading"> Exam:</td> <td class="value"><?php echo $quizName ?></td></tr>
+            
+                <?php if (!$this->quiz->isHideResultCorrectQuestion()) { ?>
+                  <tr><td class="heading"> Correct Qstn.:</td> <td class="value wpProQuiz_correct_answer">0</td></tr>
+                  <tr><td class="heading"> Total Qstn.:</td> <td class="value"><?php echo $questionCount ?></td> </tr>
+                <?php }
+
+                if (!$this->quiz->isHideResultPoints()) { ?>
+                  <div class="wpProQuiz_points">
+                    <tr><td class="heading"> Your Points:</td> <td class="value wpProQuiz_your_points">0</td></tr>
+                    <tr><td class="heading"> Total Points:</td> <td class="value wpProQuiz_total_points">0</td> </tr>
+                  </div>
+                <?php }
+            
+                if ($this->quiz->isShowAverageResult()) { ?>
+                  <tr><td class="heading"> Avg. Score:</td> <td class="value wpProQuiz_resultValue"><span></span></td> </tr>
+                  <tr><td class="heading"> Your Score:</td> <td class="value wpProQuiz_resultValue"><span></span></td> </tr>
+                <?php }
+
+                if (!$this->quiz->isHideResultQuizTime()) { ?>
+                  <tr><td class="heading"> Your Time:</td> <td class="value wpProQuiz_quiz_time"><span></span></td></tr>
+                <?php } ?>
+              </table>
+  
+            </div>
+
+          </div>
+
             <div>
                 <ul class="wpProQuiz_resultsList">
                     <?php foreach ($result['text'] as $resultText) { ?>
