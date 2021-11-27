@@ -1,6 +1,6 @@
 # Wp-Pro-Quiz
 
-A powerful and beautiful quiz plugin for WordPress.
+A powerful and beautiful quiz plugin for WordPress. Originally created by [Julius](http://www.it-gecko.de/) modified by [HostFuture](https://hostfuture.co.in)
 
 ![WordPress Plugin Version](https://img.shields.io/wordpress/plugin/v/wp-pro-quiz) ![WordPress Plugin Downloads](https://img.shields.io/wordpress/plugin/dm/wp-pro-quiz) ![WordPress Plugin Active Installs](https://img.shields.io/wordpress/plugin/installs/wp-pro-quiz) ![WordPress Plugin: Tested WP Version](https://img.shields.io/wordpress/plugin/tested/wp-pro-quiz) ![WordPress Plugin: Required WP Version](https://img.shields.io/wordpress/plugin/wp-version/wp-pro-quiz)
 

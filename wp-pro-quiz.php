@@ -10,17 +10,19 @@
  * Plugin Name: Wp-Pro-Quiz
  * Plugin URI: http://wordpress.org/extend/plugins/wp-pro-quiz
  * Description: A powerful and beautiful quiz plugin for WordPress.
- * Version: 0.37
+ * Version: 0.38
  * Requires at least: 4.6
  * Requires PHP: 5.6
  * Author: Julius Fischer
  * Author URI: http://www.it-gecko.de
+ * Last Updated By: Debjit Sadhukhan
+ * Updated URI: https://hostfuture.co.in
  * Text Domain: wp-pro-quiz
  * License: GPL v2 or later
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  */
 
-define('WPPROQUIZ_VERSION', '0.37');
+define('WPPROQUIZ_VERSION', '0.38');
 
 define('WPPROQUIZ_DEV', false);
 
